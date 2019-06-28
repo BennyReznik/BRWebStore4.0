@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "categoryId": "2",
+    "name": "Tablet",
+    "itemsInStock": 40
+  },
+  {
+    "id": "2",
+    "categoryId": "1",
+    "name": "Vacuum",
+    "itemsInStock": 50
+  },
+  {
+    "id": "3",
+    "categoryId": "2",
+    "name": "watch",
+    "itemsInStock": 60
+  },
+  {
+    "id": "4",
+    "categoryId": "3",
+    "name": "table",
+    "itemsInStock": 10
+  }
+]
