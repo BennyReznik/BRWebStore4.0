@@ -1,7 +1,6 @@
 import express from "express";
 import cors from "cors";
 import { config } from "./routes";
-import winston from "winston";
 import expressWinston from "express-winston";
 import logError from "./middleware/logError";
 import { initPassport } from "./utils/passport";
