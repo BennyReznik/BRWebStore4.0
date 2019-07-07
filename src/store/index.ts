@@ -1,24 +1,20 @@
 import { IProduct } from "../models/product";
 import { ICategory } from "../models/category";
-import products from "./products.json";
-import categories from "./categories.json";
-import users from "./users.json";
-import credentials from "./credentials.json";
 import { IUser } from "../models/user";
 import { ICredential } from "../models/credentials";
 
 interface Store {
-  loadProducts: () => Promise<IProduct[]>;
-  loadCategories: () => Promise<ICategory[]>;
-  loadUsers: () => Promise<IUser[]>;
-  credentials: ICredential[];
+  loadProducts: IProduct[];
+  loadCategories: ICategory[];
+  loadUsers: IUser[];
+  loadCredentials: ICredential[];
 }
 
 const store: Store = {
-  loadProducts: () => Promise.resolve(products),
-  loadCategories: () => Promise.resolve(categories),
-  loadUsers: () => Promise.resolve(users),
-  credentials
+  loadProducts: Array<IProduct>(),
+  loadCategories: Array<ICategory>(),
+  loadUsers: Array<IUser>(),
+  loadCredentials: Array<ICredential>()
 };
 
 export { store };

@@ -4,16 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:run": "./node_modules/.bin/tsc && npm run watch",
+    "build:run": "./node_modules/.bin/tsc",
     "build:clean": "rm -rf ./dist",
-    "build": "npm run build:clean && npm run build:run",
+    "copy-files": "mkdir dist && cd dist && mkdir public && cd .. && cp -R ./src/static/** ./dist/public",
+    "clean-and-copy": "npm run build:clean && npm run copy-files",
+    "build": "npm run clean-and-copy && npm run build:run",
     "serve": "node dist/index.js",
     "start": "npm run build && npm run serve",
-    "lint:ts": "./node_modules/.bin/tslint --project . --format codeFrame",
-    "lint:ts:fix": "npm -s run lint:ts -- --fix",
-    "watch:ts": "./node_modules/.bin/tsc -w",
+    "watch:ts": "npm run clean-and-copy && \"./node_modules/.bin/tsc\" -w",
     "watch:js": "./node_modules/.bin/nodemon dist/index.js",
-    "watch": "./node_modules/.bin/tsc-watch --onSuccess \"npm run watch:js\""
+    "watch": "npm run clean-and-copy && \"./node_modules/.bin/tsc-watch\" --onSuccess \"npm run watch:js\"",
+    "lint:ts": "./node_modules/.bin/tslint --project . --format codeFrame",
+    "lint:ts:fix": "npm -s run lint:ts -- --fix"
   },
   "author": "Benny Reznik",
   "license": "ISC",
@@ -28,6 +30,8 @@
     "@types/passport": "^1.0.0",
     "@types/passport-jwt": "^3.0.1",
     "@types/passport-local": "^1.0.33",
+    "@types/request": "^2.48.1",
+    "@types/request-promise": "^4.1.44",
     "@types/winston": "^2.4.4",
     "nodemon": "^1.19.0",
     "tsc-watch": "^2.2.1",
@@ -44,6 +48,8 @@
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4",
     "winston": "^3.2.1"
   }
 }

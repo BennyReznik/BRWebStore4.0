@@ -13,7 +13,7 @@ export function initPassport() {
         passwordField: "password"
       },
       (email, password, callback) => {
-        const user = store.credentials.find(
+        const user = store.loadCredentials.find(
           u => u.email === email && u.password === password
         );
 

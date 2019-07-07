@@ -1,17 +1,19 @@
+// tslint:disable:no-console
 import config, { KnownConfigKey } from "./utils/config";
-
 config.init();
+
+import { format } from "util";
 import { app } from "./app";
+import { makeCalls } from "./client";
 
 const port = +config.get(KnownConfigKey.ServerPort, "3000");
 app.set("port", port);
 
-// tslint:disable:no-console
 const server = app.listen(app.get("port"), () => {
-  console.log(
-    "  App is running at http://localhost:%d in %s mode",
-    app.get("port"),
-    app.get("env")
-  );
+  const address = format("http://localhost:%d", app.get("port"));
+  console.log("  App is running at %s in %s mode", address, app.get("env"));
   console.log("  Press CTRL-C to stop\n");
+
+  console.log("  Load data: HTTP calls..");
+  makeCalls(address);
 });

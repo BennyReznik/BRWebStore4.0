@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { getOrThrow, idSchema, nameSchema } from "../validations";
+import { getOrThrow, idSchema } from "../validations";
 
 const checkIfIdIsNumber = (
   req: Request,
